@@ -1,7 +1,7 @@
 let b;
 function setup() {
     createCanvas(500, 500);
-    this.b = new Boundary(300, 300, 300, 450);
+    this.b = new Boundary(300, 300, 300, 40);
 }
 
 function draw() {
