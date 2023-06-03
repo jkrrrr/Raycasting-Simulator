@@ -1,7 +1,9 @@
 let g;
 function setup() {
-    createCanvas(500, 500);
-    this.g = new TerrainGen(500, 1, 500);
+    let width = 500;
+    let height = 500;
+    createCanvas(width, height);
+    this.g = new TerrainGen(width, height);
     this.g.generatePath();
 }
 
