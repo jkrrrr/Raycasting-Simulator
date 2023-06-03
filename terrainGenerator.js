@@ -4,16 +4,16 @@ class TerrainGen {
         this.pathLength = length;
         this.screenWidth = screenWidth;
         this.segmentLength = 10;
-        this.pathWidth = 100;
+        this.pathWidth = 300;
         this.path = [];
     }
 
     generatePath() {
-        let boundarys = [];
-        let x = this.start;
-        let y = this.screenWidth / 2 - this.pathWidth / 2;
+        let x = this.screenWidth / 2 - this.pathWidth / 2;
+        let y = this.start;
         for (var i = 0; i < this.pathLength; i++) {
             let angle = this.generateAngle(40, 140);
+            console.log(`angle: ` + angle);
             let x2 = Math.cos(angle) * this.segmentLength;
             let y2 = Math.sin(angle) * this.segmentLength;
             let b1 = new Boundary(x, y, x2, y2);
