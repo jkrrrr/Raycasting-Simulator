@@ -2,13 +2,30 @@ class Particle {
     constructor() {
         this.pos = createVector(width / 2, height / 2);
         this.rays = [];
-        for (let a = 0; a < 360; a += 10) {
+        for (let a = 0; a < 360; a += 1) {
             this.rays.push(new Ray(this.pos, radians(a)))
         }
+        this.speed = 20;
     }
 
     update(x, y) {
         this.pos.set(x, y);
+    }
+
+    right() {
+        this.pos.x += this.speed;
+    }
+
+    left() {
+        this.pos.x -= this.speed;
+    }
+
+    up() {
+        this.pos.y -= this.speed;
+    }
+
+    down() {
+        this.pos.y += this.speed;
     }
 
     look(walls) {

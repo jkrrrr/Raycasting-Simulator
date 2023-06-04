@@ -15,6 +15,18 @@ function setup() {
     frameRate(15);
 }
 
+function keyPressed() {
+    if (key === 'ArrowUp') {
+        particle.up();
+    } else if (key === 'ArrowDown') {
+        particle.down();
+    } else if (key === 'ArrowLeft') {
+        particle.left();
+    } else if (key === 'ArrowRight') {
+        particle.right();
+    }
+}
+
 function draw() {
     background(0);
     for (let edge of edgeBoundaries) {
@@ -22,7 +34,6 @@ function draw() {
     }
     let path = g.draw();
     let allEdges = path.concat(edgeBoundaries);
-    particle.update(mouseX, mouseY);
     particle.show();
     particle.look(allEdges);
     // ray.show();
