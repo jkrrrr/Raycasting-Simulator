@@ -3,8 +3,8 @@ class TerrainGen {
         this.start = screenHeight;
         this.screenWidth = screenWidth;
         this.screenHeight = screenHeight;
-        this.segmentLength = 20;
-        this.pathWidth = screenWidth - 200;
+        this.segmentLength = 35;
+        this.pathWidth = screenWidth - 300;
         this.path = [];
         this.generatePath();
     }
