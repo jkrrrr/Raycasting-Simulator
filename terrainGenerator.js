@@ -78,5 +78,9 @@ class TerrainGen {
             line(this.path[i].a.x, this.path[i].a.y, this.path[i].b.x, this.path[i].b.y);
         }
         this.generatePath();
+        return this.getPath();
+    }
+    getPath() {
+        return this.path;
     }
 }
