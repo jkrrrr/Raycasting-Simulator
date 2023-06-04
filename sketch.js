@@ -10,6 +10,13 @@ function setup() {
         let y2 = random(height);
         b[i] = new Boundary(x1, y1, x2, y2);
     }
+
+    b.push(new Boundary(0, 0, width, 0));
+    b.push(new Boundary(width, 0, width, height));
+    b.push(new Boundary(width, height, 0, height));
+    b.push(new Boundary(0, height, 0, 0));
+
+
     particle = new Particle();
 }
 
