@@ -12,7 +12,7 @@ function setup() {
 
     g = new TerrainGen(width, height);
     particle = new Particle();
-    frameRate(20);
+    frameRate(15);
 }
 
 function draw() {
