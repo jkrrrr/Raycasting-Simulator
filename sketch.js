@@ -16,13 +16,13 @@ function setup() {
 }
 
 function keyPressed() {
-    if (key === 'ArrowUp') {
+    if (key === "ArrowUp") {
         particle.up();
-    } else if (key === 'ArrowDown') {
+    } else if (key === "ArrowDown") {
         particle.down();
-    } else if (key === 'ArrowLeft') {
+    } else if (key === "ArrowLeft") {
         particle.left();
-    } else if (key === 'ArrowRight') {
+    } else if (key === "ArrowRight") {
         particle.right();
     }
 }
@@ -32,10 +32,12 @@ function draw() {
     for (let edge of edgeBoundaries) {
         edge.draw();
     }
+
     let path = g.draw();
     let allEdges = path.concat(edgeBoundaries);
-    particle.show();
     particle.look(allEdges);
+    particle.show();
+    g.generatePath();
     // ray.show();
     // ray.lookAt(mouseX, mouseY);
 
