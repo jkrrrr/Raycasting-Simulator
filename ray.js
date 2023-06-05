@@ -44,8 +44,5 @@ class Ray {
             return pt;
         }
         return false;
-
-
     }
-
 }
