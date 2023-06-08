@@ -19,10 +19,24 @@ class Ray {
     }
 
     cast(wall) {
-        const x1 = wall.a.x;
-        const y1 = wall.a.y;
-        const x2 = wall.b.x;
-        const y2 = wall.b.y;
+        const center = wall.center;
+        // console.log("center: " + center);
+        const length = wall.length;
+        // console.log("length: " + length);
+        const angle = wall.angle;
+        // console.log("angle: " + angle);
+        const xLen = Math.round(Math.sin(radians(angle)) * (length / 2 + 1));
+        const yLen = Math.round(Math.cos(radians(angle)) * (length / 2 + 1));
+        // console.log("xLen: " + xLen);
+        // console.log("yLen: " + yLen);
+        const x1 = wall.a.x + (xLen - Math.abs(center.x - wall.a.x)) * (Math.abs(wall.a.x - center.x + 1) / (wall.a.x - center.x + 1.5));
+        // console.log("x1: " + x1);
+        const y1 = wall.a.y + (yLen - Math.abs(center.y - wall.a.y)) * (Math.abs(wall.a.y - center.y + 1) / (wall.a.y - center.y + 1.5));
+        // console.log("y1: " + y1);
+        const x2 = wall.b.x + (xLen - Math.abs(center.x - wall.b.x)) * (Math.abs(wall.b.x - center.x + 1) / (wall.b.x - center.x + 1.5));
+        // console.log("x2: " + x2);
+        const y2 = wall.b.y + (yLen - Math.abs(center.y - wall.b.y)) * (Math.abs(wall.b.y - center.y + 1) / (wall.b.y - center.y + 1.5));
+        // console.log("y2: " + y2);
 
         const x3 = this.pos.x;
         const y3 = this.pos.y;
