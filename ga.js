@@ -19,7 +19,8 @@ function pickOne() {
     }
     index--;
     let particle = savedParticles[index];
-    let child = new Particle(particle.brain);
+    let centerOfPath = g.getCenterOfPath();
+    let child = new Particle({ brain: particle.brain, pos: createVector(centerOfPath.x, centerOfPath.y) });
     child.mutate();
     return child;
 }

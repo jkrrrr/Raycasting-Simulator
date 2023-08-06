@@ -1,7 +1,7 @@
 class Particle {
-    constructor(brain) {
+    constructor({ brain = null, pos = createVector(width / 2, height / 2) }) {
         this.score = 0;
-        this.pos = createVector(width / 2, height / 2);
+        this.pos = pos;
         this.rays = [];
         this.distances = [];
         for (let a = 0; a < 360; a += 45) {

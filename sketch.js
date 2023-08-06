@@ -24,8 +24,10 @@ function setup() {
     edgeBoundaries.push(new Boundary(0, height, 0, 0));
 
     g = new TerrainGen(width, height);
+    let centerOfPath = g.getCenterOfPath();
+    console.log(centerOfPath);
     for (let i = 0; i < TOTAL; i++) {
-        particles[i] = new Particle();
+        particles[i] = new Particle({ brain: null, pos: centerOfPath });
     }
     frameRate(15);
 }

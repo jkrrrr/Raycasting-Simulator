@@ -98,4 +98,12 @@ class TerrainGen {
     getPath() {
         return this.path;
     }
+    getCenterOfPath() {
+        let index = Math.round(this.path.length / 2 / 2);
+        let verticalMidL = this.path[index];
+        let x = verticalMidL.getA().x + this.pathWidth / 2;
+        let y = verticalMidL.getA().y;
+        // console.log(y);
+        return createVector(x, y);
+    }
 }

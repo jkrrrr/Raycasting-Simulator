@@ -17,6 +17,14 @@ class Boundary {
         this.angle = Math.abs((ang * 180) / Math.PI);
     }
 
+    getA() {
+        return this.a;
+    }
+
+    getB() {
+        return this.b;
+    }
+
     draw() {
         stroke(255);
         line(this.a.x, this.a.y, this.b.x, this.b.y);
