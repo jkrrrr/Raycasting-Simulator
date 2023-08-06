@@ -1,7 +1,20 @@
 let g;
-let particle;
 let edgeBoundaries = [];
+
+const TOTAL = 5;
+let particles = [];
+let savedParticles = [];
+let counter = 0;
+
+function keyPressed() {
+    if (key === "S") {
+        let particle = particles[0];
+        saveJSON(particle.brain, "particle.json");
+    }
+}
+
 function setup() {
+    tf.setBackend("cpu");
     let width = 500;
     let height = 500;
     createCanvas(width, height);
@@ -11,31 +24,61 @@ function setup() {
     edgeBoundaries.push(new Boundary(0, height, 0, 0));
 
     g = new TerrainGen(width, height);
-    particle = new Particle();
+    for (let i = 0; i < TOTAL; i++) {
+        particles[i] = new Particle();
+    }
     frameRate(15);
 }
 
 function keyPressed() {
     if (key === "ArrowUp") {
-        particle.up();
+        particles[0].up();
     } else if (key === "ArrowDown") {
-        particle.down();
+        particles[0].down();
     } else if (key === "ArrowLeft") {
-        particle.left();
+        particles[0].left();
     } else if (key === "ArrowRight") {
-        particle.right();
+        particles[0].right();
     }
 }
 
 function draw() {
+    counter++;
     background(0);
     for (let edge of edgeBoundaries) {
         edge.draw();
     }
-
     let path = g.draw();
     let allEdges = path.concat(edgeBoundaries);
-    particle.look(allEdges);
-    particle.show();
+
+    //check if particle collides
+    for (let j = particles.length - 1; j >= 0; j--) {
+        particles[j].show();
+        let visibleWalls = particles[j].look(allEdges);
+        let pos = particles[j].getPos();
+        if (pos.y >= height || pos.y <= 0) {
+            console.log("out of bounds");
+            savedParticles.push(particles.splice(j, 1)[0]);
+        } else {
+            for (vw of visibleWalls) {
+                if (vw == edgeBoundaries[1] || vw == edgeBoundaries[3]) {
+                    console.log("out of bounds");
+                    savedParticles.push(particles.splice(j, 1)[0]);
+                    break;
+                }
+            }
+        }
+    }
+
+    for (p of particles) {
+        p.think();
+        p.update();
+    }
+
+    if (particles.length === 0) {
+        counter = 0;
+        nextGeneration();
+    }
+
     g.generatePath();
 }
