@@ -1,7 +1,7 @@
 let g;
 let edgeBoundaries = [];
 
-const TOTAL = 20;
+const TOTAL = 250;
 let particles = [];
 let savedParticles = [];
 let counter = 0;

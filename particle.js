@@ -79,7 +79,6 @@ class Particle {
 
     think() {
         let output = this.brain.predict(this.distances);
-        console.log(output);
         let largest = 0;
         let index = 0;
         for (let i = 0; i < output.length; i++) {
@@ -88,8 +87,6 @@ class Particle {
                 index = i;
             }
         }
-        console.log(index);
-
         switch (index) {
             case 0:
                 this.right();
