@@ -10,14 +10,10 @@ class Particle {
         if (brain) {
             this.brain = brain.copy();
         } else {
-            this.brain = new NeuralNetwork(this.rays.length, 8, 4);
+            this.brain = new NeuralNetwork(this.rays.length, 25, 5);
         }
         this.speed = 20;
     }
-
-    // update(x, y) {
-    //     this.pos.set(x, y);
-    // }
 
     right() {
         this.pos.x += this.speed;
@@ -59,7 +55,7 @@ class Particle {
             }
             if (closest) {
                 visibleWalls.push(w);
-                line(this.pos.x, this.pos.y, closest.x, closest.y);
+                // line(this.pos.x, this.pos.y, closest.x, closest.y);
             }
             this.distances.push(record);
         }
@@ -83,6 +79,36 @@ class Particle {
 
     think() {
         let output = this.brain.predict(this.distances);
+        console.log(output);
+        let largest = 0;
+        let index = 0;
+        for (let i = 0; i < output.length; i++) {
+            if (output[i] > largest) {
+                largest = output[i];
+                index = i;
+            }
+        }
+        console.log(index);
+
+        switch (index) {
+            case 0:
+                this.right();
+                break;
+            case 1:
+                this.left();
+                break;
+            case 2:
+                this.up();
+                break;
+            case 3:
+                this.down();
+                break;
+            case 4:
+            //dont do anything
+            default:
+            //nothing
+        }
+
         if (Math.round(output[0]) == 1) {
             this.right();
         } else if (Math.round(output[1]) == 1) {

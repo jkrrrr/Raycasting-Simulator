@@ -1,13 +1,13 @@
 let g;
 let edgeBoundaries = [];
 
-const TOTAL = 5;
+const TOTAL = 20;
 let particles = [];
 let savedParticles = [];
 let counter = 0;
 
 function keyPressed() {
-    if (key === "S") {
+    if (key === "s") {
         let particle = particles[0];
         saveJSON(particle.brain, "particle.json");
     }
