@@ -30,18 +30,6 @@ function setup() {
     frameRate(15);
 }
 
-function keyPressed() {
-    if (key === "ArrowUp") {
-        particles[0].up();
-    } else if (key === "ArrowDown") {
-        particles[0].down();
-    } else if (key === "ArrowLeft") {
-        particles[0].left();
-    } else if (key === "ArrowRight") {
-        particles[0].right();
-    }
-}
-
 function draw() {
     counter++;
     background(0);
